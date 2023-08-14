@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Sounds/music.mp3" type="AudioStream" id=1]
+[ext_resource path="res://Main.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/Background.png" type="Texture" id=3]
+[ext_resource path="res://Spotlight/Spotlight.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Fonts/Score.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Fonts/Title.tres" type="DynamicFont" id=6]
+
+[node name="Main" type="Node2D" groups=["main"]]
+script = ExtResource( 2 )
+
+[node name="Spotlight" parent="." instance=ExtResource( 4 )]
+position = Vector2( -10, 31 )
+
+[node name="Background1" type="Sprite" parent="."]
+z_index = -1000
+texture = ExtResource( 3 )
+offset = Vector2( 32, 32 )
+
+[node name="Background2" type="Sprite" parent="."]
+position = Vector2( 64, 0 )
+z_index = -1000
+texture = ExtResource( 3 )
+offset = Vector2( 32, 32 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+
+[node name="Score" type="Label" parent="."]
+margin_right = 64.0
+margin_bottom = 14.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 5 )
+text = "0"
+align = 1
+
+[node name="MainMenu" type="Control" parent="."]
+margin_right = 64.0
+margin_bottom = 64.0
+
+[node name="Best" type="Label" parent="MainMenu"]
+margin_top = 50.0
+margin_right = 64.0
+margin_bottom = 64.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 5 )
+text = "BEST: "
+align = 1
+uppercase = true
+
+[node name="TapToFire" type="Label" parent="MainMenu"]
+margin_top = 28.0
+margin_right = 64.0
+margin_bottom = 42.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 5 )
+text = "tap to fire"
+align = 1
+uppercase = true
+
+[node name="Title" type="Label" parent="MainMenu"]
+margin_top = 5.0
+margin_right = 64.0
+margin_bottom = 31.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 6 )
+text = "SHippy"
+align = 1
+uppercase = true
+
+[node name="AvoidSpotlight" type="Label" parent="MainMenu"]
+margin_left = 1.0
+margin_top = 39.0
+margin_right = 65.0
+margin_bottom = 53.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 5 )
+text = "avoid spotlight"
+align = 1
+uppercase = true

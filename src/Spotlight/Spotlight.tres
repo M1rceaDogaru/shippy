@@ -1,0 +1,27 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform vec4 original_1: hint_color;
+uniform vec4 original_2: hint_color;
+uniform vec4 replace_1: hint_color;
+uniform vec4 replace_2: hint_color;
+
+const float precision = 0.1;
+
+vec4 swap_color(vec4 color){
+	if (distance(color, original_1) <= precision){
+		return replace_1;
+	} else if (distance(color, original_2) <= precision) {
+		return replace_2;
+	}
+	return original_2;
+}
+
+void fragment(){
+	vec4 orig_color = texture(TEXTURE, UV);
+	vec4 screen_color = texture(SCREEN_TEXTURE, SCREEN_UV);
+	COLOR.rgb = swap_color(screen_color).rgb;
+	COLOR.a = orig_color.a;
+}"
